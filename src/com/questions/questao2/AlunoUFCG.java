@@ -1,4 +1,4 @@
-package com.questoes.questao2;
+package com.questions.questao2;
 
 
 public class AlunoUFCG implements Runnable {

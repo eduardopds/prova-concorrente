@@ -1,8 +1,9 @@
-package com.questoes.questao2;
+package com.questions.questao2;
 
 /*
 	Utilizo a variáveis autorizaRemar, numAlunosUEPB, numAlunosUFCG e total para colocar as threads para
-	"dormir". As 3 primeiras iniciando com 0 e a última como false
+	"dormir". As 3 primeiras iniciando com 0 e a última como false.
+	O notifyAll pra acordar todas as threads que estão aguardando o notify no objeto.
  */
 public class Barco {
 
@@ -67,7 +68,7 @@ public class Barco {
 				wait();
 			}
 
-			this.numAlunosUEPB++;
+			this.numAlunosUEPB += 1;
 
 			System.out.println("O aluno " + nome + " da UEPB embarcou.");
 
@@ -79,12 +80,13 @@ public class Barco {
 				wait();
 			}
 
-			this.numAlunosUFCG++;
+			this.numAlunosUFCG += 1;
 
 			System.out.println("O aluno " + nome + " da UFCG embarcou.");
 
 		}
 
+		// barco cheio
 		while (this.total == 4) {
 			wait();
 		}
@@ -94,7 +96,6 @@ public class Barco {
 		if (this.total == 4) {
 
 			System.out.println("Barco cheio");
-			Thread.sleep(500);
 			this.autorizaRemar = true;
 			this.rema(nome,uni);
 		}
@@ -113,20 +114,15 @@ public class Barco {
 		}
 
 		System.out.println("O aluno " + nome + " da " + uni +  " está remando");
-		Thread.sleep(900);
 		System.out.println("O barco saiu da origem");
-		Thread.sleep(4500);
 		System.out.println("O barco chegou ao outro lado");
-
 
 		this.autorizaRemar = false;
 		this.total = 0;
 		this.numAlunosUEPB = 0;
 		this.numAlunosUFCG = 0;
 
-		Thread.sleep(950);
 		System.out.println("Iniciando nova viagem");
-		Thread.sleep(950);
 		notifyAll();
 	}
 

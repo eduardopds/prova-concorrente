@@ -1,4 +1,4 @@
-package com.questoes.questao1;
+package com.questions.questao1;
 
 public class Passageiro implements Runnable {
 

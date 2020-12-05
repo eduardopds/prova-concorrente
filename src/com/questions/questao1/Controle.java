@@ -1,9 +1,8 @@
-package com.questoes.questao1;
+package com.questions.questao1;
 
 /*
  Essa classe funciona como um buffer.
- O notifyAll pra acordar todas as threads que estão aguardando o notify objeto.
- Utilizo um número negativo brm grande para indicar o fim do desembarque
+ O notifyAll pra acordar todas as threads que estão aguardando o notify no objeto.
  */
 public class Controle {
 
@@ -41,9 +40,7 @@ public class Controle {
 		this.descarregando = false;
 		this.embarque = false;
 
-		Thread.sleep(900);
 		System.out.println("O carro pronto para carregar");
-		Thread.sleep(900);
 
 		notifyAll();
 	}
@@ -63,7 +60,6 @@ public class Controle {
 		this.vagasOcupadas += 1;
 
 		System.out.println("Passageiro " + nome + " embarcou.");
-		Thread.sleep(1000);
 
 		notifyAll();
 	}
@@ -78,13 +74,11 @@ public class Controle {
 		this.carregando = false;
 
 		System.out.println("O carro está correndo...... o~^^~o ... o~^^~o ... o~^^~o ..");
-		Thread.sleep(2000);
 
-		notifyAll();
 	}
 
 	/*
-		Se as vagas ocupadas
+		Se as vagas ocupadas = 0 então não é possível descarregar, logo fica esperando
 	 */
 	public synchronized void descarregar() throws InterruptedException {
 
@@ -93,7 +87,6 @@ public class Controle {
 		}
 
 		System.out.println("O carro parou .. o~^^~o");
-		Thread.sleep(2000);
 
 		this.descarregando = true;
 
@@ -104,7 +97,7 @@ public class Controle {
 		Se o número de vagas ocupadas for igual a 0 e não estiverem descarregando, o passageiro não pode
 		desembarcar, logo ele fica esperando.
 	 */
-	public synchronized void desembarcar(String passageiro) throws InterruptedException {
+	public synchronized void desembarcar(String nome) throws InterruptedException {
 
 		while (!descarregando || this.vagasOcupadas == 0) {
 			wait();
@@ -112,8 +105,7 @@ public class Controle {
 
 		this.vagasOcupadas -= 1;
 
-		System.out.println("O passageiro " + passageiro + " desembarcou.");
-		Thread.sleep(900);
+		System.out.println("O passageiro " + nome + " desembarcou.");
 
 		if (this.vagasOcupadas == 0) this.embarque = true;
 

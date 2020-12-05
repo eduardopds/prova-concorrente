@@ -1,4 +1,4 @@
-package com.questoes.questao2;
+package com.questions.questao2;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -7,7 +7,7 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		ExecutorService executor = Executors.newFixedThreadPool(9);
+		ExecutorService executor = Executors.newFixedThreadPool(8);
 		Barco barco = new Barco();
 
 		AlunoUFCG ufcg1 = new AlunoUFCG(barco, "fulano");

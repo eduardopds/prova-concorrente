@@ -7,7 +7,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        ExecutorService executorService = Executors.newFixedThreadPool(4);
+        ExecutorService executorService = Executors.newFixedThreadPool(3);
 
         Bar auri = new Bar();
         Aluno al1 = new Aluno("fulano", auri);
