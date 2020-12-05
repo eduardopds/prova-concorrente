@@ -1,21 +1,55 @@
-package com.questions.questao3;
+package com.questoes.questao3;
 
 public class Aluno implements Runnable{
 
+    private Bar bar;
     private String nome;
-    private Bar auri;
 
-    public Aluno(String nome, Bar auri){
+    public Aluno(String nome, Bar bar){
 
         this.nome = nome;
-        this.auri = auri;
+        this.bar = bar;
     }
 
+    public void bebe(){
+        try {
+
+            this.bar.bebe(this.nome);
+
+        } catch (InterruptedException e) {
+
+            e.printStackTrace();
+        }
+    }
+
+    public void sai(){
+        try {
+
+            this.bar.sai(this.nome);
+
+        } catch (InterruptedException e) {
+
+            e.printStackTrace();
+        }
+    }
+
+    public void entra() {
+
+        try {
+
+            this.bar.entra(this.nome);
+
+        } catch (InterruptedException e) {
+
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public void run() {
 
         try{
+
             while(true){
 
                 this.entra();
@@ -25,35 +59,10 @@ public class Aluno implements Runnable{
 
         }catch (Exception e){
 
+            System.out.println(e.getMessage());
+
         }
 
     }
-
-    public void entra() {
-
-        try {
-            this.auri.entra(this.nome);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void sai(){
-        try {
-            this.auri.sai(this.nome);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void bebe(){
-        try {
-            this.auri.bebe(this.nome);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-
 
 }

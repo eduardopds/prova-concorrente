@@ -1,4 +1,4 @@
-package com.questions.questao3;
+package com.questoes.questao3;
 
 public class Bar {
 
@@ -29,7 +29,7 @@ public class Bar {
 
     public synchronized void entra(String nome) throws InterruptedException {
 
-        this.naMesa = this.naMesa + 1;
+        this.naMesa += 1;
 
         Thread.sleep(1500);
 
@@ -49,8 +49,8 @@ public class Bar {
             System.out.println(nome + " não conseguiu sair");
             wait();
         }
-        this.bebendo = this.bebendo - 1;
-        this.naMesa = this.naMesa - 1;
+        this.bebendo =- 1;
+        this.naMesa =- 1;
 
         System.out.println(nome + " saiu da mesa - " + this.naMesa + " estao na mesa");
         Thread.sleep(1000);

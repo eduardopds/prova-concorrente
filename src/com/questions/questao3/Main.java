@@ -1,4 +1,4 @@
-package com.questions.questao3;
+package com.questoes.questao3;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -7,18 +7,16 @@ public class Main {
 
     public static void main(String[] args) {
 
+        ExecutorService executorService = Executors.newFixedThreadPool(4);
+
         Bar auri = new Bar();
-        Aluno a1 = new Aluno("fulano", auri);
-        Aluno a2 = new Aluno("ciclano", auri);
-        Aluno a3 = new Aluno("beltrano", auri);
-        //Aluno a4 = new Aluno("fulano1", auri);
+        Aluno al1 = new Aluno("fulano", auri);
+        Aluno al2 = new Aluno("ciclano", auri);
+        Aluno al3 = new Aluno("beltrano", auri);
 
-        ExecutorService execute = Executors.newFixedThreadPool(4);
-
-        execute.execute(a1);
-        execute.execute(a2);
-        execute.execute(a3);
-        //execute.execute(a4);
+        executorService.execute(al1);
+        executorService.execute(al2);
+        executorService.execute(al3);
 
     }
 }
