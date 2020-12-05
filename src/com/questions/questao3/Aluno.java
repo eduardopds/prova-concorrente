@@ -1,4 +1,4 @@
-package com.questoes.questao3;
+package com.questions.questao3;
 
 public class Aluno implements Runnable{
 

@@ -1,4 +1,4 @@
-package com.questoes.questao3;
+package com.questions.questao3;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
