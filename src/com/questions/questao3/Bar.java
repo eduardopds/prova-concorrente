@@ -13,41 +13,47 @@ public class Bar {
 
     }
 
-    public synchronized void bebe(String nome) throws InterruptedException {
-
-        this.bebendo += 1;
-
-        System.out.println(nome + " está bebendo...");
-        System.out.println(nome + " está remediando - " + bebendo + " estao bebendo - " + naMesa + " estao na mesa");
-
-        notifyAll();
-
-
-    }
-
     public synchronized void entra(String nome) throws InterruptedException {
 
         this.naMesa += 1;
 
+        //Thread.sleep(1000);
         System.out.println(nome + " sentou a mesa");
-
+        //Thread.sleep(1000);
         System.out.println(nome + " está remediando - " + bebendo + " estao bebendo - " + naMesa + " estao na mesa");
 
         notifyAll();
 
     }
+
+    public synchronized void bebe(String nome) throws InterruptedException {
+
+        this.bebendo += 1;
+
+        //Thread.sleep(1000);
+        System.out.println(nome + " está bebendo...");
+        //Thread.sleep(1000);
+        System.out.println(nome + " está remediando - " + bebendo + " estao bebendo - " + naMesa + " estao na mesa");
+
+        notifyAll();
+
+
+    }
+
     /*
         Verifica se o aluno pode sair, caso contrário fica esperando.
      */
     public synchronized void sai(String nome) throws InterruptedException {
 
         while(this.naMesa < 3 && this.bebendo <= 2){
+            //Thread.sleep(1000);
             System.out.println(nome + " não conseguiu sair");
             wait();
         }
         this.bebendo -= 1;
         this.naMesa -= 1;
 
+        //Thread.sleep(1000);
         System.out.println(nome + " saiu da mesa - " + this.naMesa + " estao na mesa");
         notifyAll();
 

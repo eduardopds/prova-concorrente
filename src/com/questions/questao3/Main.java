@@ -7,16 +7,18 @@ public class Main {
 
     public static void main(String[] args) {
 
-        ExecutorService executorService = Executors.newFixedThreadPool(3);
+        ExecutorService executorService = Executors.newFixedThreadPool(4);
 
         Bar auri = new Bar();
         Aluno al1 = new Aluno("fulano", auri);
         Aluno al2 = new Aluno("ciclano", auri);
         Aluno al3 = new Aluno("beltrano", auri);
+        Aluno al4 = new Aluno("beltrano1", auri);
 
         executorService.execute(al1);
         executorService.execute(al2);
         executorService.execute(al3);
+        executorService.execute(al4);
 
     }
 }
